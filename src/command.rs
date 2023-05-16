@@ -15,7 +15,7 @@ pub fn ls() {
     // }
 }
 
-pub fn snmpget() {
+pub fn snmpget(n: usize) {
     let snmpget = Command::new("snmpget")
         .arg("-v2c")
         .arg("-c")
@@ -25,5 +25,6 @@ pub fn snmpget() {
         .output()
         .expect("failed to execute snmpget command");
 
+    println!("Processing number {}", n);
     println!("{}", String::from_utf8_lossy(&snmpget.stdout));
 }
